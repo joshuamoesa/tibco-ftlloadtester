@@ -1,0 +1,99 @@
+package ftlreceiver;
+
+import java.util.List;
+import java.util.Vector;
+
+import com.tibco.ftl.*;
+
+public class Receiver implements SubscriberListener 
+{
+    Realm realm;
+    Subscriber sub=null;
+    EventQueue queue=null;
+    Vector<Message> msgList = new Vector();
+    
+    public long totalNumberOfMessages;
+    ArgParser argParser;
+    
+    public void setArgParser(ArgParser inputArgParser)
+    {
+    	argParser=inputArgParser;
+    }
+    
+    
+	public Receiver(String inputRealmServer, String inputAppName, String inputUser, String inputPassword, String inputDurableName, String inputEndPoint)
+	{
+		TibProperties realmProps, durableProps;
+		
+		try {
+			realmProps = FTL.createProperties();
+			realmProps.set(Realm.PROPERTY_STRING_USERNAME, inputUser);
+			realmProps.set(Realm.PROPERTY_STRING_USERPASSWORD, inputPassword);			
+			realm = FTL.connectToRealmServer(inputRealmServer, inputAppName, realmProps);
+			durableProps = FTL.createProperties();
+			durableProps.set(Subscriber.PROPERTY_STRING_DURABLE_NAME, inputDurableName);
+			durableProps.set(Subscriber.PROPERTY_BOOL_EXPLICIT_ACK,false);
+			sub = realm.createSubscriber(inputEndPoint, null, durableProps);
+			
+			queue = realm.createEventQueue();
+	        queue.addSubscriber(sub, this);
+			
+			realmProps.destroy();
+			realmProps = null;
+			durableProps.destroy();
+			durableProps=null;
+		} catch (FTLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void messagesReceived(List<Message> messages, EventQueue eventQueue)
+    {
+        //int i;
+        int msgNum = messages.size();
+         
+        // debug System.out.println("Received "+msgNum+" messages. in thread:"+Thread.currentThread().getId());
+        count(msgNum);
+    }
+	
+	private synchronized void count(int nrOfMessages)
+	{
+		
+		totalNumberOfMessages=totalNumberOfMessages+nrOfMessages;
+	}
+	
+	
+	public void close()
+	{
+		
+		if (queue != null)
+		{
+		    if (sub != null)
+				try {
+					queue.removeSubscriber(sub);
+					queue.destroy();
+				} catch (FTLException e) {
+					e.printStackTrace();
+				}
+		}
+		if (sub != null)
+		{
+		    try {
+				sub.close();
+			} catch (FTLException e) {
+				e.printStackTrace();
+			}
+	    } 
+	}
+	
+	public void dispatch()
+	{
+		try {
+			queue.dispatchNow();
+		} catch (FTLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+}
