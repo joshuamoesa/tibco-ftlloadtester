@@ -5,6 +5,22 @@
 		<item value="600" key="width"/>
 		<item value="400" key="height"/>
 	</section>
+	<section name="FatJarPackageWizard">
+		<item value="/Users/joshuamoesa/Documents/Github/joshuamoesa/tibco-ftlloadtester/src/workspace" key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION"/>
+		<item value="Ftlsender - Ftlsender" key="FatJarPackageWizardPage.LAUNCH_CONFIGURATION_SELECTION_NAME"/>
+		<item value="/Users/joshuamoesa/Documents/Github/joshuamoesa/tibco-ftlloadtester/jars/Ftlsender.jar" key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION"/>
+		<item value="false" key="FatJarPackageWizardPage.ANTSCRIPT_SAVE"/>
+		<item value="1" key="FatJarPackageWizardPage.LIBRARY_HANDLING"/>
+		<list key="FatJarPackageWizardPage.DESTINATION_NAMES_ID">
+			<item value="/Users/joshuamoesa/Documents/Github/joshuamoesa/tibco-ftlloadtester/jars/Ftlsender.jar"/>
+			<item value="/Users/joshuamoesa/Documents/Github/joshuamoesa/tibco-ftlloadtester/jars/Ftlreceiver.jar"/>
+			<item value="/Users/joshuamoesa/Desktop/export/Ftlsender.jar"/>
+		</list>
+		<list key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION_HISTORY">
+			<item value="/Users/joshuamoesa/Documents/Github/joshuamoesa/tibco-ftlloadtester/src/workspace.xml"/>
+			<item value=".xml"/>
+		</list>
+	</section>
 	<section name="org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart">
 		<item value="2" key="layout"/>
 		<item value="true" key="group_libraries"/>
@@ -12,13 +28,15 @@
 		<item value="1" key="rootMode"/>
 		<item value="false" key="linkWithEditor"/>
 	</section>
+	<section name="OptionalMessageDialog.hide.">
+	</section>
 	<section name="NewPackageWizardPage">
 		<item value="false" key="create_package_info_java"/>
 	</section>
 	<section name="quick_assist_proposal_size">
 	</section>
 	<section name="BuildPathsPropertyPage">
-		<item value="2" key="pageIndex"/>
+		<item value="0" key="pageIndex"/>
 	</section>
 	<section name="completion_proposal_size">
 	</section>
