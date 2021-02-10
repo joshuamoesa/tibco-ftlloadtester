@@ -6,6 +6,15 @@ For your convenience, an Eclipse workspace can be found under /src/
 
 ## Preparation
 
+### Prerequisites
+
+Locally installed:
+* Java;
+* TIBCO BusinessWorks ContainerEdition (version used: 2.5.4);
+* TIBCO BusinessWorks FTL plugin;
+* TIBCO FTL (version used: 6.6;
+* Java.
+
 ### Creating Runnable JARS in Eclipse
 
 Make sure that whilst creating runnable jars using Eclipse (_right-click project > Export > Runnable JAR file_), at _Library handling_ option 'Extract required libraries into generated JAR.' is chosen. 
